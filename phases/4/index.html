@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NLConsole Setup</title>
+    <link rel="stylesheet" href="../../css/beuty.css">
+    <link rel="stylesheet" href="../../css/custom.css">
+    <script>
+      let progress = 0;
+      let installInterval;
+
+      function nextStep() {
+        window.location.href = "../../phases/5";
+      }
+
+      function add1Percent() {
+        if (progress < 100) {
+          progress += 1;
+          document.querySelector('.progress-bar').style.width = progress + '%';
+        } else {
+          clearInterval(installInterval);
+          setTimeout(nextStep, 2000);
+        }
+      }
+
+      function install() {
+        add1Percent();
+        installInterval = setInterval(add1Percent, 200);
+      }
+    </script>
+  </head>
+  <body onload="install()">
+    <div class="setup card">
+      <div class="card-header"> NLConsole Setup </div>
+      <div class="card-body">
+        <p class="text-center">Installation complete. Verifying the integrity of files via checksum.</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

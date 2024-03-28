@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NLConsole Setup</title>
+    <link rel="stylesheet" href="../../css/beuty.css">
+    <link rel="stylesheet" href="../../css/custom.css">
+    <script>
+      function nextStep() {
+        window.location.href = "../../phases/2";
+      }
+
+      function changeNotification() {
+        document.getElementById("notification").innerHTML = "Activation code detected. Proceeding to the next phase.<br>Do not unplug the security key at any point.";
+        document.getElementById("plugInButton").remove();
+      }
+
+      function plugIn() {
+        document.getElementById("plugInButton").setAttribute("disabled", "disabled");
+        document.getElementById("plugInButton").innerHTML = "USB plugged in! Please wait...";
+        setTimeout(changeNotification, 5000);
+        setTimeout(nextStep, 6500);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="setup card">
+      <div class="card-header"> NLConsole Setup </div>
+      <div class="card-body">
+        <div class="alert alert-primary d-flex align-items-center mb-0">
+          <img src="../../images/icons8-usb-on-50.png">
+          <!-- USB On icon by Icons8 (https://icons8.com/icon/udzWXDsVSb4J/usb-on) -->
+          <p class="mb-0" id="notification">Before continuing the setup, please plug in your USB security key containing the activation code for this instance.</p>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary action" onclick="plugIn()" id="plugInButton">Plug in the security USB security key</button>
+  </body>
+</html>
